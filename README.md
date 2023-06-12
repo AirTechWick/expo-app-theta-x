@@ -1,4 +1,4 @@
-# RICOH THETA JavaScript Demo 
+# RICOH THETA X Demo 
 
 Barebones example of using [theta-javascript](https://github.com/theta360developers/theta-javascript)
 in a React Native Expo app.
