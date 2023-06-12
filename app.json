@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ThetaJDemo",
-    "slug": "ThetaJDemo",
-    "version": "1.0.0",
+    "name": "ThetaXDemo",
+    "slug": "ThetaXDemo",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
