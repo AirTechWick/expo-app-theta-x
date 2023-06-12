@@ -20,9 +20,9 @@ import { setVideoButtonControl } from "./theta_control/set-video-button-control"
 
 export default function App() {
   // fake-theta
-  // const urlEndpoint = "https://fake-theta.vercel.app/osc/";
+  const urlEndpoint = "https://fake-theta.vercel.app/osc/";
   // real theta physical device in access point mode
-  const urlEndpoint = "http://192.168.1.1/osc/";
+  // const urlEndpoint = "http://192.168.1.1/osc/";
 
   // end camera endpoint config
   const [responseWindow, onChangeResponseWindow] = useState(
@@ -63,6 +63,73 @@ export default function App() {
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
+            title="Off Cam SRC"
+            onPress={() => {
+              offCameraControlSource(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("Off Cam SRC Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="On Cam SRC"
+            onPress={() => {
+              onCameraControlSource(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("On Cam SRC Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View>
+      </View>
+      {/* start of vid buttons row */}
+      <View style={styles.buttonRow}>
+       <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="vid 5 mins"
+            onPress={() => {
+              maxRecordTime5mins(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("Max Record Time 5 minutes Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View> 
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="vid 25 mins"
+            onPress={() => {
+              maxRecordTime25mins(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("Max Record Time 25 minutes Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="vid 2 hrs"
+            onPress={() => {
+              maxRecordTime2hours(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("Max Record Time 2 hours Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View> 
+      </View>
+
+      {/* Row of Bit Rate Options */}
+      <View style={styles.buttonRow}>
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
             title="bit rate econ"
             onPress={() => {
               bitrateEconomy(urlEndpoint).then(function (data) {
@@ -72,21 +139,6 @@ export default function App() {
             }}
           ></Button>
         </View>      
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            title="bit rate fine"
-            onPress={() => {
-              bitrateFine(urlEndpoint).then(function (data) {
-                console.log(data);
-                onChangeResponseWindow("Bit Rate Fine Successful!\n\n" + data);
-              });
-            }}
-          ></Button>
-        </View>           
-      </View>
-      {/* start of second row of buttons */}
-      <View style={styles.buttonRow}>
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
@@ -102,42 +154,18 @@ export default function App() {
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            title="5.7k 10fps"
+            title="bit rate fine"
             onPress={() => {
-              fileFormat5_7k_10_fps(urlEndpoint).then(function (data) {
+              bitrateFine(urlEndpoint).then(function (data) {
                 console.log(data);
-                onChangeResponseWindow("5.7k 10fps Successful!\n\n" + data);
+                onChangeResponseWindow("Bit Rate Fine Successful!\n\n" + data);
               });
             }}
           ></Button>
-        </View>    
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            title="5.7k 2fps"
-            onPress={() => {
-              fileFormat5_7k_2_fps(urlEndpoint).then(function (data) {
-                console.log(data);
-                onChangeResponseWindow("5.7k 2fps Successful!\n\n" + data);
-              });
-            }}
-          ></Button>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            title="5.7k 5fps"
-            onPress={() => {
-              fileFormat5_7k_5_fps(urlEndpoint).then(function (data) {
-                console.log(data);
-                onChangeResponseWindow("5.7k 5fps Successful!\n\n" + data);
-              });
-            }}
-          ></Button>
-        </View>  
+        </View>           
       </View>
-      {/* end of second row of buttons */}
-      {/* start of third row of buttons */}
+
+      {/* start of 8k buttons row*/}
       <View style={styles.buttonRow}>
         <View style={styles.buttonContainer}>
           <Button
@@ -166,46 +194,6 @@ export default function App() {
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            title="vid 2 hrs"
-            onPress={() => {
-              maxRecordTime2hours(urlEndpoint).then(function (data) {
-                console.log(data);
-                onChangeResponseWindow("Max Record Time 2 hours Successful!\n\n" + data);
-              });
-            }}
-          ></Button>
-        </View> 
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            title="vid 5 mins"
-            onPress={() => {
-              maxRecordTime5mins(urlEndpoint).then(function (data) {
-                console.log(data);
-                onChangeResponseWindow("Max Record Time 5 minutes Successful!\n\n" + data);
-              });
-            }}
-          ></Button>
-        </View> 
-      </View>
-
-      {/* start of fourth row of buttons */}
-      <View style={styles.buttonRow}>
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            title="vid 25 mins"
-            onPress={() => {
-              maxRecordTime25mins(urlEndpoint).then(function (data) {
-                console.log(data);
-                onChangeResponseWindow("Max Record Time 25 minutes Successful!\n\n" + data);
-              });
-            }}
-          ></Button>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
             title="8k 10fps"
             onPress={() => {
               fileFormat8k_10_fps(urlEndpoint).then(function (data) {
@@ -215,30 +203,49 @@ export default function App() {
             }}
           ></Button>
         </View>
+      </View>
+
+      {/* start of 5k buttons row*/}
+      <View style={styles.buttonRow}>
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            title="Off Cam SRC"
+            title="5.7k 2fps"
             onPress={() => {
-              offCameraControlSource(urlEndpoint).then(function (data) {
+              fileFormat5_7k_2_fps(urlEndpoint).then(function (data) {
                 console.log(data);
-                onChangeResponseWindow("Off Cam SRC Successful!\n\n" + data);
+                onChangeResponseWindow("5.7k 2fps Successful!\n\n" + data);
               });
             }}
           ></Button>
         </View>
+
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            title="On Cam SRC"
+            title="5.7k 5fps"
             onPress={() => {
-              onCameraControlSource(urlEndpoint).then(function (data) {
+              fileFormat5_7k_5_fps(urlEndpoint).then(function (data) {
                 console.log(data);
-                onChangeResponseWindow("On Cam SRC Successful!\n\n" + data);
+                onChangeResponseWindow("5.7k 5fps Successful!\n\n" + data);
               });
             }}
           ></Button>
-        </View>
+        </View>  
+
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="5.7k 10fps"
+            onPress={() => {
+              fileFormat5_7k_10_fps(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("5.7k 10fps Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View>    
+
       </View>
       <View style={styles.responseWindowContainer}>
         <Text>{responseWindow}</Text>
