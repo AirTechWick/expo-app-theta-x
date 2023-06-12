@@ -20,9 +20,9 @@ import { setVideoButtonControl } from "./theta_control/set-video-button-control"
 
 export default function App() {
   // fake-theta
-  const urlEndpoint = "https://fake-theta.vercel.app/osc/";
+  // const urlEndpoint = "https://fake-theta.vercel.app/osc/";
   // real theta physical device in access point mode
-  // const urlEndpoint = "http://192.168.1.1/osc/";
+  const urlEndpoint = "http://192.168.1.1/osc/";
 
   // end camera endpoint config
   const [responseWindow, onChangeResponseWindow] = useState(

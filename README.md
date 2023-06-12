@@ -5,7 +5,7 @@ in a React Native Expo app.
 
 Works with both fake-theta (no camera API simulator) and a physical device.
 
-![screenshot](readme_assets/Screenshot_1686589440.png)
+![screenshot](readme_assets/Screenshot_1686596350.png)
 
 ## Switch to between fake-theta and real physical device
 
