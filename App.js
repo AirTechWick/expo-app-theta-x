@@ -14,6 +14,9 @@ import { fileFormat8k_5_fps } from "./theta_control/fileFormat.8k_5_fps";
 import { maxRecordTime2hours } from "./theta_control/max-record-time-2-hours";
 import { maxRecordTime5mins } from "./theta_control/max-record-time-5-mins";
 import { maxRecordTime25mins } from "./theta_control/max-record-time-25-mins";
+import { fileFormat8k_10_fps } from "./theta_control/fileFormat.8k_10_fps";
+import { setImageButtonControl } from "./theta_control/set-image-button-control";
+import { setVideoButtonControl } from "./theta_control/set-video-button-control";
 
 export default function App() {
   // fake-theta
@@ -30,17 +33,17 @@ export default function App() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.headerText}>RICOH THETA JavaScript Demo</Text>
+        <Text style={styles.headerText}>RICOH THETA X Demo</Text>
       </View>
       <View style={styles.buttonRow}>
-        <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            title="Off Cam SRC"
+            title="Img Mode"
             onPress={() => {
-              offCameraControlSource(urlEndpoint).then(function (data) {
+              setImageButtonControl(urlEndpoint).then(function (data) {
                 console.log(data);
-                onChangeResponseWindow("Off Cam SRC Successful!\n\n" + data);
+                onChangeResponseWindow("Img Mode Successful!\n\n" + data);
               });
             }}
           ></Button>
@@ -48,11 +51,11 @@ export default function App() {
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
-            title="On Cam SRC"
+            title="Vid Mode"
             onPress={() => {
-              onCameraControlSource(urlEndpoint).then(function (data) {
+              setVideoButtonControl(urlEndpoint).then(function (data) {
                 console.log(data);
-                onChangeResponseWindow("On Cam SRC Successful!\n\n" + data);
+                onChangeResponseWindow("Vid Mode Successful!\n\n" + data);
               });
             }}
           ></Button>
@@ -200,8 +203,43 @@ export default function App() {
             }}
           ></Button>
         </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="8k 10fps"
+            onPress={() => {
+              fileFormat8k_10_fps(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("8k 10fps Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="Off Cam SRC"
+            onPress={() => {
+              offCameraControlSource(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("Off Cam SRC Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="On Cam SRC"
+            onPress={() => {
+              onCameraControlSource(urlEndpoint).then(function (data) {
+                console.log(data);
+                onChangeResponseWindow("On Cam SRC Successful!\n\n" + data);
+              });
+            }}
+          ></Button>
+        </View>
       </View>
-
       <View style={styles.responseWindowContainer}>
         <Text>{responseWindow}</Text>
       </View>
